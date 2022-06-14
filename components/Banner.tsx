@@ -31,7 +31,7 @@ const Banner = ({ netflixOriginals }: Props) => {
 
       <h1 className='text-2xl lg:text-7xl font-bold md:text-4xl '>{movie?.title || movie?.name || movie?.original_name}</h1>
       <p className='max-w-xs text-sm md:max-w-lg  md:text-lg lg:max-w-2xl text-shadow-md'>{movie?.overview}</p>
-      <div className='flex gap-3'>
+      <div className='flex gap-3 mt-4'>
         <button className='flex items-center gap-x-2 rounded px-5 py-1.5 text-sm font-semibold transition hover:opacity-65 md:py-2.5 md:px-8 md:text-xl bg-white text-black'> <FaPlay className='h-4 w-4 text-black md:w-5 md:h-5' /> Play</button>
         <button className='flex items-center gap-x-2 rounded px-5 py-1.5 font-semibold transition  hover:opacity-65 md:py-2.5 md:px-8 md:tex-xl bg-[gray]/70'>More Info<InformationCircleIcon className='h-4 w-4 text-white md:w-7 md:h-7' /> </button>
       </div>
