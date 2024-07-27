@@ -60,7 +60,7 @@ function Login() {
             <input
               type="email"
               placeholder="Email"
-              className={`input w-full px-2 py-3 ${
+              className={`input w-full text-black px-2 py-3 ${
                 errors.email && 'border-b-2 border-orange-500'
               }`}
               {...register('email', { required: true })}

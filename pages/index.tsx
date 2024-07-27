@@ -3,33 +3,36 @@ import Head from 'next/head'
 import Image from 'next/image'
 import Header from '../components/Header'
 import Banner from '../components/Banner'
-import { Movie } from "../types"
+import { Movie } from '../types'
 import Row from '../components/Row'
 import requests from '../utils/requests'
 import { useRecoilValue } from 'recoil'
 import { modalState } from '../atom/modalAtom'
-import  Modal  from '../components/Modal'
+import Modal from '../components/Modal'
 
 interface Props {
-  netflixOriginals: Movie[],
-  trendingNow: Movie[],
-  topRated: Movie[],
-  actionMovies: Movie[],
-  comedyMovies: Movie[],
-  horrorMovies: Movie[],
-  romanceMovies: Movie[],
-  documentaries: Movie[],
+  netflixOriginals: Movie[]
+  trendingNow: Movie[]
+  topRated: Movie[]
+  actionMovies: Movie[]
+  comedyMovies: Movie[]
+  horrorMovies: Movie[]
+  romanceMovies: Movie[]
+  documentaries: Movie[]
 }
 
-const Home = ({ netflixOriginals, trendingNow,topRated,
+const Home = ({
+  netflixOriginals,
+  trendingNow,
+  topRated,
   actionMovies,
   comedyMovies,
   horrorMovies,
   romanceMovies,
-  documentaries }: Props) => {
-
-    const showModal = useRecoilValue(modalState)
-    console.log(showModal)
+  documentaries,
+}: Props) => {
+  const showModal = useRecoilValue(modalState)
+  console.log(showModal)
 
   return (
     <div className="relative h-screen bg-gradient-to-b from-gray-900/10 to-[#010511] lg:h-[140vh]">
@@ -40,10 +43,10 @@ const Home = ({ netflixOriginals, trendingNow,topRated,
       {/* Header  */}
       <Header />
 
-      <main className='relaive pl-4 pb-24 lg:space-y-24 lg:pl-16'>
+      <main className="relaive pl-4 pb-24 lg:space-y-24 lg:pl-16">
         {/* Banner  */}
         <Banner netflixOriginals={netflixOriginals} />
-        <section className='md:space-y-24'>
+        <section className="md:space-y-24">
           <Row title="Trending Now" movies={trendingNow} />
 
           <Row title="Top Rated" movies={topRated} />
@@ -63,9 +66,7 @@ const Home = ({ netflixOriginals, trendingNow,topRated,
           {/* Row  */}
         </section>
       </main>
-      {showModal && <Modal/>}
-
-
+      {showModal && <Modal />}
 
       {/* 
       <footer className="flex h-24 w-full items-center justify-center border-t">
@@ -85,12 +86,7 @@ const Home = ({ netflixOriginals, trendingNow,topRated,
 
 export default Home
 
-
 export const getServerSideProps = async () => {
-
-
-
-
   const [
     netflixOriginals,
     trendingNow,
@@ -114,16 +110,15 @@ export const getServerSideProps = async () => {
 
   return {
     props: {
-      netflixOriginals: netflixOriginals.results,
-      trendingNow: trendingNow.results,
-      topRated: topRated.results,
-      actionMovies: actionMovies.results,
-      comedyMovies: comedyMovies.results,
-      horrorMovies: horrorMovies.results,
-      romanceMovies: romanceMovies.results,
-      documentaries: documentaries.results,
+      netflixOriginals: netflixOriginals.results || {},
+      trendingNow: trendingNow.results || {},
+      topRated: topRated.results || {},
+      actionMovies: actionMovies.results || {},
+      comedyMovies: comedyMovies.results || {},
+      horrorMovies: horrorMovies.results || {},
+      romanceMovies: romanceMovies.results || {},
+      documentaries: documentaries.results || {},
       // products,
     },
   }
-
 }
