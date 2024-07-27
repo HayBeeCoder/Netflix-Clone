@@ -11,9 +11,9 @@ interface Inputs {
 
 function Login() {
   const [login, setLogin] = useState(false)
-  const { signIn, signUp,loading} = useAuth()
+  const { signIn, signUp, loading } = useAuth()
 
-  console.log("loading : " , loading)
+  console.log('loading : ', loading)
 
   const {
     register,
@@ -95,7 +95,7 @@ function Login() {
           {/* {
             loading ? 
             "...Signing In" : */}
-            Sign In
+          {login ? 'Sign In' : 'Sign Up'}
           {/* }` */}
         </button>
         <div className="text-[gray]">
